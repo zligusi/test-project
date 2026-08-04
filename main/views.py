@@ -27,7 +27,7 @@ class CategoryView(TemplateView):
         'color' : lambda queryset , value : queryset.filter(color_iexact=value),
         'min_price' : lambda queryset , value : queryset.filter(price_gte=value),
         'max_price' : lambda queryset , value : queryset.filter(price_lte=value),
-        'size' : lambda queryset , value : queryset.filter(product_size__size_name=value),
+        'size' : lambda queryset , value : queryset.filter(product_sizes__size_name=value),
     }
     
     def context_data(self , **kwargs):
@@ -104,6 +104,6 @@ class ProductDetailView(DetailView):
     def get(self , request , *args , **kwargs): 
         self.object = self.get_object()
         context = self.get_context_data(**kwargs)
-        if request.header.get('HX-Request'):
+        if request.headers.get('HX-Request'):
             return TemplateResponse(request , 'main/product_detail_html' , context)
         raise TemplateResponse(request , self.temaplate_name , context)
