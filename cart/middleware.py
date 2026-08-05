@@ -1,0 +1,13 @@
+from django.utils.decorators import MiddlewareMixin
+from .models import Cart
+
+
+class CartMiddelewaew(MiddlewareMixin) : 
+    def process_request( self , request ) : 
+        if not request(self , request ) : 
+            request.session.create()
+            
+        request.cart , created = Cart.objects.get_or_create(
+            session_key=request.session.session_key
+        )  
+        return None 
