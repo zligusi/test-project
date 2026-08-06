@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
-    'cart.middelware.CartMiddleware',
+    'cart.middleware.CartMiddleware',
 ]
 
 ROOT_URLCONF = 'pro.urls'

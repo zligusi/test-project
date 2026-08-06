@@ -1,8 +1,8 @@
-from django.utils.decorators import MiddlewareMixin
+from django.utils.deprecation import MiddlewareMixin
 from .models import Cart
 
 
-class CartMiddelewaew(MiddlewareMixin) : 
+class CartMiddleware(MiddlewareMixin) : 
     def process_request( self , request ) : 
         if not request(self , request ) : 
             request.session.create()

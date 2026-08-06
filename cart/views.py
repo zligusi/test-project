@@ -183,7 +183,7 @@ class ClearCartView(CartMixin , View ):
                 "cart" : cart 
             })
         return JsonResponse({
-            'succes' : true ,
+            'succes' : True ,
             'massege' : 'Cart cleared'
         })
         
