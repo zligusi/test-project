@@ -5,6 +5,7 @@ from django.template.response import TemplateResponse
 from .models import Category , Product , Size
 from django.db.models import Q
 
+
 class IndexView(TemplateView):
     template_name = 'main/base.html'
     
@@ -19,6 +20,7 @@ class IndexView(TemplateView):
         if request.headers.get('HX-Request'):
             return TemplateResponse(request , 'main/home.html' , context)
         return TemplateResponse(request , self.template_name , context)
+    
     
 class CategoryView(TemplateView):
     template = 'main/base.html'
@@ -85,6 +87,7 @@ class CategoryView(TemplateView):
             return TemplateResponse (request , template , context)
         return TemplateResponse(request , self.template_name , context)
     
+    
 class ProductDetailView(DetailView):
     model = Product
     temaplate_name = 'main/base.html'
@@ -106,4 +109,4 @@ class ProductDetailView(DetailView):
         context = self.get_context_data(**kwargs)
         if request.headers.get('HX-Request'):
             return TemplateResponse(request , 'main/product_detail_html' , context)
-        raise TemplateResponse(request , self.temaplate_name , context)
+        return TemplateResponse(request , self.temaplate_name , context)
